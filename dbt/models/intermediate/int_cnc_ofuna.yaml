@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: int_cnc_ofuna
+    tags: ["cnc", "ofuna", "analysis", "dw", "powerbi","intermediate"]
+    meta:
+      batch_type: "ELT"
+      dagster:
+        owners: ["dewei.ngiam.yu@lincstech.com", "team:DX"]
+        group: "cnc_ofuna_analysis"
+        freshness_policy:
+          maximum_lag_minutes: 30
+    columns:
+      - name: monitor_machineno
+        tests:
+          - accepted_values:
+              values: ['084','085','086','087','088','089','090','091']

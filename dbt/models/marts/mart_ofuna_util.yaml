@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mart_ofuna_util
+    tags: ["cnc", "ofuna", "analysis", "dw", "powerbi","mart","utilization","30 mins window per record"]
+    meta:
+      batch_type: "ELT"
+      dagster:
+        owners: ["dewei.ngiam.yu@lincstech.com", "team:DX"]
+        group: "cnc_ofuna_analysis"
+        freshness_policy:
+          maximum_lag_minutes: 30
+    columns:
+      - name: utilization_day
+        tests: [not_null]
+      - name: utilization_time
+        tests: [not_null]
+      - name: utilization_machineno
+        tests: [not_null]

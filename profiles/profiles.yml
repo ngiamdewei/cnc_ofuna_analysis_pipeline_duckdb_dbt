@@ -1,0 +1,16 @@
+cnc_ofuna_analysis:
+  target: duck_local
+  outputs:
+    duck_local:
+      type: duckdb
+      path: ../local/warehouse.duckdb
+      schema: public
+    local_pg:
+      type: postgres
+      host: 127.0.0.1
+      user: postgres
+      password: password12345
+      port: 5432
+      dbname: cnc_ofuna_dev
+      schema: raw
+      threads: 2

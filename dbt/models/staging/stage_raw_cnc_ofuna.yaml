@@ -1,0 +1,24 @@
+version: 2
+models:
+  - name: stage_raw_cnc_ofuna
+    schema: public
+    tags: ["cnc", "ofuna", "analysis", "dw", "powerbi","staging","raw"]
+    meta:
+      batch_type: "ELT"
+      dagster:
+        owners: ["dewei.ngiam.yu@lincstech.com", "team:DX"]
+        group: "cnc_ofuna_analysis"
+        freshness_policy:
+          maximum_lag_minutes: 30
+    columns:
+      - name: machine_no
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['084','085','086','087','088','089','090','091']
+      - name: timestamp_utc
+        tests: [not_null]
+      - name: timestamp_sgt
+        tests: [not_null]
+      - name: ingested_at
+        tests: [not_null]

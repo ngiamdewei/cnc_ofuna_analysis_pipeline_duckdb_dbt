@@ -1,0 +1,21 @@
+name: "cnc_ofuna_analysis_dbt"
+version: "1.0"
+config-version: 2
+
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True
+
+profile: "cnc_ofuna_analysis"
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  cnc_ofuna_analysis_dbt:
+    staging:
+     +materialized: table
+    intermediate:
+     +materialized: table
+    marts:
+     +materialized: table

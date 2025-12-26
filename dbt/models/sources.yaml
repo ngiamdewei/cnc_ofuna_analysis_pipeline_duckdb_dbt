@@ -1,0 +1,6 @@
+version: 2
+sources:
+  - name: public
+    schema: raw
+    tables:
+      - name: vw_OFUNA_84_TO_91_STAGING_CLEAN_duckdb

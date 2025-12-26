@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mart_ofuna_production
+    tags: ["cnc", "ofuna", "analysis", "dw", "powerbi","mart","production"]
+    meta:
+      batch_type: "ELT"
+      dagster:
+        owners: ["dewei.ngiam.yu@lincstech.com", "team:DX"]
+        group: "cnc_ofuna_analysis"
+        freshness_policy:
+          maximum_lag_minutes: 30
+    columns:
+      - name: production_day
+        tests: [not_null]
+      - name: production_machineno
+        tests: [not_null]
+      - name: production_starttime
+        tests: [not_null]
